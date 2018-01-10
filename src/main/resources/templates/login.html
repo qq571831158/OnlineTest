@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <title>OnlineTest</title>
 </head>
-<link rel="stylesheet" href="../static/css/login.css" type="text/css">
+<link rel="stylesheet" href="/css/login.css" type="text/css">
+<script>
+    function refreshImageCheck() {
+        document.getElementById("imageCheck").src = "http://localhost:8080/util/getImageCheck?aaa="+ new Date()
+    }
+</script>
 <body>
     <div class="loginModel">
         <div id="logo" > 用户登录</div>
@@ -16,7 +21,11 @@
 
                 <li><input type="text" name="username" placeholder="用户名"><br></li>
                 <li> <input type="password" name="password" placeholder="密码"><br></li>
-                <li id="check"><input type="text" name="imageCheck" placeholder="验证码"><img src="/util/getImageCheck"></li>
+                <li id="check"><input type="text" name="imageCheck" placeholder="验证码"><img id="imageCheck" src="/util/getImageCheck" onclick="refreshImageCheck()"></li>
+                <li>
+                    <input name="identity" type="radio" value="1" checked="checked" style="width: 20px;height: 20px;margin-left: 50px">学生
+                    <input name="identity" type="radio" value="2" style="width: 20px;height: 20px;margin-left: 100px">老师
+                </li>
                 <div id="button"><input id="button_ok" type="submit" value="登录"></div>
 
             </form>

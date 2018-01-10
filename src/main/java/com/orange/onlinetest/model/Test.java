@@ -8,14 +8,14 @@ public class Test implements Serializable  {
 
     private int questionId;
 
-    private int testpaperId;
+    private int testPaperId;
 
     public Test(){}
 
-    public Test(int id, int questionId, int testpaperId) {
+    public Test(int id, int questionId, int testPaperId) {
         this.id = id;
         this.questionId = questionId;
-        this.testpaperId = testpaperId;
+        this.testPaperId = testPaperId;
     }
 
     public int getId() {
@@ -35,10 +35,10 @@ public class Test implements Serializable  {
     }
 
     public int getTestpaperId() {
-        return testpaperId;
+        return testPaperId;
     }
 
-    public void setTestpaperId(int testpaperId) {
-        this.testpaperId = testpaperId;
+    public void setTestpaperId(int testPaperId) {
+        this.testPaperId = testPaperId;
     }
 }

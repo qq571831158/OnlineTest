@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>增加问题</title>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script src="/jquery-2.1.1/jquery.min.js" type="text/javascript"></script>
+
+    <script>
+        function btn() {
+            var content = UE.getEditor('editor').getContent();
+            $.ajax({
+                type: "POST",
+                url: "/user/addQuestion",
+                data: {
+                    title:  $("#title").val(),
+                    content:content,
+                    answer: $("#answer").val(),
+                    score: $("#score").val()
+                },
+                dataType: "text",
+                success: function b (data) {
+                    alert(data)
+                },
+                error: function a  (data) {
+                    alert("incorrect")
+                },
+            });
+        }
+    </script>
+</head>
+<body>
+ 选择试卷：
+        <select>
+            <#list testPapers as testPaper>
+            <option value ="#{testPaper.id}">${testPaper.title}</option>
+        </#list>
+        </select>
+        <br>
+        选择试题类型：
+        <select>
+            <option value ="1">单选题</option>
+            <option value ="2">多选题</option>
+            <option value="3">问答题</option>
+            <option value="4">简答题</option>
+        </select>
+        <br>
+        标题：<input type="text" id="title"
+               placeholder="请输入标题">
+        <br>
+        内容：
+ <script id="editor" type="text/plain" style="width:800px;height:250px;"></script>
+ <script>var ue = UE.getEditor('editor');</script>
+    答案:<input type="text" id="answer">
+    <br>
+        分值：<input type="text" id="score"
+               placeholder="请输入分值">
+
+ <button id="btn" onclick="btn()">提交</button>
+</body>
+</html>

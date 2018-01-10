@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Class extends BaseModel implements Serializable{
 
-    private int studentNum;
+    private int studentsNum;
 
     private String name;
 
@@ -16,20 +16,20 @@ public class Class extends BaseModel implements Serializable{
 
     public Class(){}
 
-    public Class(int id, Date createTime, Date lastModify, int studentNum, String name, int status, int teacherId) {
+    public Class(int id, Date createTime, Date lastModify, int studentsNum, String name, int status, int teacherId) {
         super(id, createTime, lastModify);
-        this.studentNum = studentNum;
+        this.studentsNum = studentsNum;
         this.name = name;
         this.status = status;
         this.teacherId = teacherId;
     }
 
-    public int getStudentNum() {
-        return studentNum;
+    public int getStudentsNum() {
+        return studentsNum;
     }
 
-    public void setStudentNum(int studentNum) {
-        this.studentNum = studentNum;
+    public void setStudentsNum(int studentNum) {
+        this.studentsNum = studentNum;
     }
 
     public String getName() {

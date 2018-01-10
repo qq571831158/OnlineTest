@@ -8,4 +8,14 @@ public class IndexController {
     public String index(){
         return "login";
     }
+
+    @RequestMapping(path = {"toTeacherIndex",})
+    public String toTeacherIndex(){
+        return "teacher/index";
+    }
+
+    @RequestMapping(path = {"toStudentIndex",})
+    public String toStudentIndex(){
+        return "student/index";
+    }
 }

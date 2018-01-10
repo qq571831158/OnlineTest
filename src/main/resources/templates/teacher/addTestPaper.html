@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>增加试卷</title>
+    <script src="../../jquery-2.1.1/jquery.min.js" type="text/javascript"></script>
+    <script>
+        function addTestPaper() {
+            $.ajax({
+                type: "POST",
+                url:'/user/addTestPaper',
+                data:{
+                    title: $('#title').val(),
+                    content: $('#content').val(),
+                    lastTime: $('#lastTime').val(),
+                    expireTime: $('#expireTime').val()
+                },
+                dataType: "json",
+                success: function b (data) {
+                    if(data.code===200){
+                        alert("添加成功")
+                    }else {
+                        alert("添加失败,"+data.msg)
+                    }
+                },
+                error: function a  (data) {
+                    alert("添加失败")
+                }
+            });
+        }
+        function clear() {
+            $('.input').val("");
+        }
+    </script>
+</head>
+<body>
+试卷标题：<input  class="input" type="text" id="title" name="title"><br>
+试卷详情：<input class="input" type="text" id="content" name="content"><br>
+考试时间：<input class="input" type="text" id="lastTime" name="lastTime" placeholder="分钟"><br>
+过期时间 <input class="input" type="text" id="expireTime" name="expireTime">  时间格式为:xxxx-xx-xx xx:xx:xx <br>
+<button id="btn1" onclick="addTestPaper()" >提交</button>
+<button id="btn2" onclick="clear()" >重置</button>
+</body>
+</html>

@@ -1,5 +1,7 @@
 package com.orange.onlinetest.controller;
 
+import com.orange.onlinetest.model.Student;
+import com.orange.onlinetest.model.Teacher;
 import com.orange.onlinetest.service.StudentService;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,19 +39,24 @@ public class LoginController {
      * @return
      */
     @RequestMapping(value = "login",method = RequestMethod.POST)
-    public String login(Model model, String username, String password, String imageCheck, HttpSession session, HttpServletResponse response){
+    public String login(Model model, String username, String password, String imageCheck,String identity, HttpSession session, HttpServletResponse response){
         String imageCode = session.getAttribute("imageCode").toString();
-        try {
-            Map<String,Object> map =  studentService.login(username,password);
-            if (!imageCheck.equals(imageCode)){
+        int id = Integer.parseInt(identity);
+        try{
+            Map<String,Object> map =  studentService.login(username,password,id);
+            if (!imageCheck.toUpperCase().equals(imageCode)){
                 model.addAttribute("msg","验证码错误");
                 return "login";
             }
 
             if (map.containsKey("ticket")){
                 Cookie cookie = new Cookie("ticket",map.get("ticket").toString());
+                cookie.setPath("/");
                 response.addCookie(cookie);
-                return "Sindex";
+                if (id == 1) {
+                    return "redirect:/toStudentIndex";
+                }
+                return"redirect:/toTeacherIndex";
             }else {
                 model.addAttribute("msg",map.get("msg"));
                 return "login";

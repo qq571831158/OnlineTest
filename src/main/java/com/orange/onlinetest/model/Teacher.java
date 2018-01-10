@@ -10,6 +10,7 @@ public class Teacher extends BaseModel implements Serializable {
 
     private String password;
 
+    private String salt;
     private String name;
 
     private String phoneNum;
@@ -22,10 +23,11 @@ public class Teacher extends BaseModel implements Serializable {
 
     public Teacher(){}
 
-    public Teacher(int id, Date createTime, Date lastModify, String username, String password, String name, String phoneNum, String email, String activeCode, int status) {
+    public Teacher(int id, Date createTime, Date lastModify, String username, String password,String salt, String name, String phoneNum, String email, String activeCode, int status) {
         super(id, createTime, lastModify);
         this.username = username;
         this.password = password;
+        this.salt = salt;
         this.name = name;
         this.phoneNum = phoneNum;
         this.email = email;
@@ -47,6 +49,14 @@ public class Teacher extends BaseModel implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt;
     }
 
     public String getName() {

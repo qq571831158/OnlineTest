@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 import java.security.MessageDigest;
 
 /**
- * Created by nowcoder on 2016/7/3.
+ * @Author orange
+ * @Description
+ * @Date: 2018/1/9 8:32
  */
 public class OnlineTestUtil {
     private static final Logger logger = LoggerFactory.getLogger(OnlineTestUtil.class);

@@ -69,7 +69,7 @@ public class ImageCheckUtil {
                     ran.nextInt(WIDTH), ran.nextInt(HEIGHT));
         }
         // 7.返回验证码和图片
-        return new Object[]{sb.toString(), image};
+        return new Object[]{sb.toString().toUpperCase(), image};
     }
 
     /**

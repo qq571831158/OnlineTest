@@ -1,8 +1,10 @@
 package com.orange.onlinetest.service;
 
 import com.orange.onlinetest.dao.StudentDAO;
+import com.orange.onlinetest.dao.TeacherDAO;
 import com.orange.onlinetest.dao.TicketDAO;
 import com.orange.onlinetest.model.Student;
+import com.orange.onlinetest.model.Teacher;
 import com.orange.onlinetest.model.Ticket;
 import com.orange.onlinetest.utils.OnlineTestUtil;
 import org.apache.commons.lang.StringUtils;
@@ -26,13 +28,16 @@ public class StudentService {
     @Autowired
     private TicketDAO ticketsDAO;
 
+    @Autowired
+    private TeacherDAO teacherDAO;
+
     /**
      * 用户登录方法
      * @param username  用户名
      * @param password  密码
      * @return map
      */
-    public Map<String,Object> login(String username,String password){
+    public Map<String,Object> login(String username,String password,int identity){
         Map<String ,Object>map = new HashMap<>();
         if (StringUtils.isBlank(username)){
             map.put("msg","用户名不能为空");
@@ -41,18 +46,36 @@ public class StudentService {
         if (StringUtils.isBlank(password)){
             map.put("msg","密码不能为空");
         }
-        Student student = studentDAO.selectByUsername(username);
-        if (student == null){
-            map.put("msg","用户名不存在");
-            return map;
+        if (identity==1){
+            Student student = studentDAO.selectByUsername(username);
+            if (student == null){
+                map.put("msg","用户名不存在");
+                return map;
+            }
+            if (!OnlineTestUtil.MD5(password+student.getSalt()).equals(student.getPassword())){
+                map.put("msg","密码错误");
+                return map;
+            }
+            String ticket = addTicket(student.getId(),true);
+            map.put("userId",student.getId());
+            map.put("ticket",ticket);
+            map.put("user",student);
+        }else {
+            Teacher teacher = teacherDAO.selectByUsername(username);
+            if (teacher == null){
+                map.put("msg","用户名不存在");
+                return map;
+            }
+            if (!OnlineTestUtil.MD5(password+teacher.getSalt()).equals(teacher.getPassword())){
+                map.put("msg","密码错误");
+                return map;
+            }
+            String ticket = addTicket(teacher.getId(),false);
+            map.put("userId",teacher.getId());
+            map.put("ticket",ticket);
+            map.put("user",teacher);
         }
-        if (!OnlineTestUtil.MD5(password+student.getSalt()).equals(student.getPassword())){
-            map.put("msg","密码错误");
-            return map;
-        }
-        String ticket = addTicket(student.getId());
-        map.put("userId",student.getId());
-        map.put("ticket",ticket);
+
         return map;
     }
 
@@ -61,10 +84,14 @@ public class StudentService {
      * @param userId  用户id
      * @return ticket
      */
-    public String addTicket(int userId){
+    public String addTicket(int userId,boolean isStudent){
         Ticket ticket = new Ticket();
         ticket.setUserId(userId);
-        ticket.setUserType(1);
+        if (isStudent){
+            ticket.setUserType(1);
+        }else {
+            ticket.setUserType(2);
+        }
         Date now = new Date();
         now.setTime(3600*24*100+now.getTime());
         ticket.setExpired(now);

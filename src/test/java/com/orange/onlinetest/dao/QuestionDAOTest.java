@@ -34,6 +34,8 @@ public class QuestionDAOTest {
     public void selectByTeacherId() {
         List<Question> questions = questionDAO.selectByTeacherId(1);
         System.out.println(questions.get(0).getTitle());
+        System.out.println(questions.get(0).getTeacherId());
+        System.out.println(questions.get(0).getCreateTime());
     }
 
     @Test

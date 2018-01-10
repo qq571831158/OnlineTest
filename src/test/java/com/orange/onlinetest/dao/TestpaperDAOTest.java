@@ -1,6 +1,6 @@
 package com.orange.onlinetest.dao;
 
-import com.orange.onlinetest.model.Testpaper;
+import com.orange.onlinetest.model.TestPaper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +9,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * @Author orange
@@ -21,17 +19,17 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class TestpaperDAOTest {
     @Autowired
-    private TestpaperDAO testpaperDAO;
+    private TestPaperDAO testpaperDAO;
 
     @Test
     public void selectById() {
-        Testpaper testpaper = testpaperDAO.selectById(1);
+        TestPaper testpaper = testpaperDAO.selectById(1);
         System.out.println(testpaper.getTitle());
     }
 
     @Test
     public void addTestpaper() {
-        Testpaper testpaper = new Testpaper();
+        TestPaper testpaper = new TestPaper();
         testpaper.setTitle("上海市第一次全国中学生考试");
         testpaper.setContent("奥术大师多萨达撒大所大声道阿萨德阿斯顿撒大四");
         testpaper.setDescribution("实打实大大");
@@ -46,7 +44,7 @@ public class TestpaperDAOTest {
 
     @Test
     public void selectByTeacherId(){
-        List<Testpaper> testpaper = testpaperDAO.selectByTeacherId(1);
+        List<TestPaper> testpaper = testpaperDAO.selectByTeacherId(1);
         System.out.println(testpaper.get(0).getTitle());
     }
 }

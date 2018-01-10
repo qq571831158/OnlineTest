@@ -1,11 +1,13 @@
 package com.orange.onlinetest.service;
 
+import com.orange.onlinetest.dao.ClassDAO;
 import com.orange.onlinetest.dao.QuestionDAO;
 import com.orange.onlinetest.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author orange
@@ -17,6 +19,7 @@ public class QuestionService {
     @Autowired
     private QuestionDAO questionDAO;
 
+
     public int addQuesion(String title,String content,String answer,int score,int teacherId){
         Question question = new Question();
         question.setTitle(title);
@@ -27,5 +30,9 @@ public class QuestionService {
         question.setCreateTime(new Date());
         question.setLastModify(new Date());
         return questionDAO.insertQuesion(question);
+    }
+
+    public List<Question> getAllQuestion(int teacherId){
+        return questionDAO.selectByTeacherId(teacherId);
     }
 }
