@@ -14,6 +14,10 @@ import java.util.Date;
 @Aspect
 @Component
 public class LogAspect {
+
+    //this is me add
+
+
     private static final Logger logger = LoggerFactory.getLogger(LogAspect.class);
 
     @Before("execution(* com.orange.onlinetest.controller.*Controller.*(..))")
