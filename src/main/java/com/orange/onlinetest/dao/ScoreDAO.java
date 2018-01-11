@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface ScoreDAO {
     String TABLE_NAME = "SCORE";
 
-    String INSERT_FIELDS = "STUDNET_ID,TESTPAPER_ID,SCORE,CREATE_TIME,LAST_MODIFY";
+    String INSERT_FIELDS = "STUDENT_ID,TESTPAPER_ID,SCORE,CREATE_TIME,LAST_MODIFY";
 
     String SELECT_FIELDS = "ID," + INSERT_FIELDS;
 
