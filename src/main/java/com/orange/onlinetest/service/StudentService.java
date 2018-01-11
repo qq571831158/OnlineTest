@@ -7,7 +7,7 @@ import com.orange.onlinetest.model.Student;
 import com.orange.onlinetest.model.Teacher;
 import com.orange.onlinetest.model.Ticket;
 import com.orange.onlinetest.utils.OnlineTestUtil;
-import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Date;
