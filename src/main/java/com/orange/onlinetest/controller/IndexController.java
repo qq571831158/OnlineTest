@@ -18,7 +18,4 @@ public class IndexController {
     public String toStudentIndex(){
         return "student/index";
     }
-
-
-    
 }
