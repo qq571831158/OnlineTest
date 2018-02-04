@@ -4,24 +4,24 @@
     <meta charset="UTF-8">
     <title>OnlineTest</title>
 </head>
-<link rel="stylesheet" href="/css/login.css" type="text/css">
+<link rel="stylesheet" href="${request.contextPath}/css/login.css" type="text/css">
 <script>
     function refreshImageCheck() {
-        document.getElementById("imageCheck").src = "http://localhost:8080/util/getImageCheck?aaa="+ new Date()
+        document.getElementById("imageCheck").src = "${request.contextPath}/util/getImageCheck?aaa="+ new Date()
     }
 </script>
 <body>
     <div class="loginModel">
         <div id="logo" > 用户登录</div>
         <div id="login">
-            <form action="/student/login" method="post">
+            <form action="${request.contextPath}/student/login" method="post">
                 <center style="color: red"> <#if msg??>
                     ${msg}
                 </#if></center>
 
                 <li><input type="text" name="username" placeholder="用户名"><br></li>
                 <li> <input type="password" name="password" placeholder="密码"><br></li>
-                <li id="check"><input type="text" name="imageCheck" placeholder="验证码"><img id="imageCheck" src="/util/getImageCheck" onclick="refreshImageCheck()"></li>
+                <li id="check"><input type="text" name="imageCheck" placeholder="验证码"><img id="imageCheck" src="${request.contextPath}/util/getImageCheck" onclick="refreshImageCheck()"></li>
                 <li>
                     <input name="identity" type="radio" value="1" checked="checked" style="width: 20px;height: 20px;margin-left: 50px">学生
                     <input name="identity" type="radio" value="2" style="width: 20px;height: 20px;margin-left: 100px">老师
@@ -31,7 +31,7 @@
             </form>
             <div id="login_foot">
                 <div id="login_foot1"><a>忘记密码</a></div>
-                <div id="login_foot2"><a href="/student/toRegisterPage">注册</a></div>
+                <div id="login_foot2"><a href="${request.contextPath}/student/toRegisterPage">注册</a></div>
                 <div style="clear: both"></div>
             </div>
         </div>
