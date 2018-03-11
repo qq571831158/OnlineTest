@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>教师端首页</title>
+    <script src="${request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="${request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link href="${request.contextPath}/css/home.css" rel="stylesheet">
+</head>
+<body>
+<div id="top">
+    <img id="logo"src="${request.contextPath}/image/logo.Examroom.png">
+    <ul id="top-menu">
+        <li id="menu-left"><span>首页</span><span>我的题库</span><span>成绩管理</span><span>校广场</span></li>
+        <li id="menu-right"><span id="username">${user.name}</span>老师,您好!<a id="close-icon">退出</a><span>通知</span><span>帮助</span></li>
+    </ul>
+    <div style="clear: both"></div>
+    <div id="menu-bottomleft" >
+        <a href="home.html"><span >课程列表</span></a>
+        <a href="message-stu.html"><span >学生列表</span></a>
+    </div>
+    <!--<div id="menu-bottomright"><img src="../../static/image/add-icon.png"><span>加入班级</span></div>-->
+    <div style="clear: both"></div>
+
+</div>
+<div style="clear: both"></div>
+
+<div id="body">
+    <div class="card-box">
+        <div class="card-body">
+            <div class="class-title">C语言程序与设计(<span id="stu-num">20</span>)</div>
+            <!--考试信息-->
+            <div class="class-textlist">
+                <ul class="text-message">
+                    <div class="message-circle"></div>
+                    <div class="text-name">期末考试</div>
+                    <div class="text-time">今天19:00开始</div>
+                    <div style="clear: both"></div>
+                </ul>
+                <ul class="text-message">
+                    <div class="message-circle"></div>
+                    <div class="text-name">期末考试</div>
+                    <div class="text-time">2018/01/29开始</div>
+                    <div style="clear: both"></div>
+                </ul>
+                <ul class="text-message">
+                    <div class="message-circle"></div>
+                    <div class="text-name">期末考试</div>
+                    <div class="text-time">98分</div>
+                    <div style="clear: both"></div>
+                </ul>
+            </div>
+            <div class="button">
+                <a href="examlist.html" target="_blank"><button class="button-name" id="btn-more">详情</button></a>
+                <button class="button-name" id="btn-del">删除</button>
+                <span class=" button-time">2018/01/25</span></div>
+        </div>
+        <div class="card-circle"><span class="circle-name">C</span></div>
+    </div>
+    <div id="btn-addclass">
+        <img src="${request.contextPath}/image/btn-add.png">
+    </div>
+    <div style="clear: both"></div>
+</div>
+
+</body>
+</html>

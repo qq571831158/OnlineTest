@@ -1,0 +1,183 @@
+body,ul,p,h1,h2,h3,h4,h5,dl,dd,form,input,textarea,select{  padding: 0px;  margin: 0px;  font-family: Arial; }
+li{  list-style: none;  }
+image{border: none;}
+a,a:hover{ text-decoration:none; color:#333}
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+em{ font-style:normal;}
+
+body{
+    background: #FAFAFB;
+    width: 100%;
+}
+#top{
+    background:#464e60;
+    border: none;
+    height: 200px;
+    box-shadow:0 5px 4px 0 rgba(155,155,155,0.73);
+}
+#top #logo{
+    float: left;
+    position:relative;
+    top: 50px;
+    margin-right: 20px;
+    margin-left: 30px;
+}
+#top #top-menu #menu-left{
+    float: left;
+    position: relative;
+    top: 50px;
+    font-size:26px;
+    color:#e0e0e0;
+}
+#top #top-menu #menu-left span{
+    margin-left: 50px;
+}
+
+#top #top-menu #menu-right{
+    float: right;
+    margin-right: 30px;
+    margin-top: 50px;
+    font-size:26px;
+    color:#e0e0e0;
+}
+/*关闭*/
+#top #top-menu #menu-right #close-icon{
+    display: none;
+}
+#top #top-menu #menu-right span{
+    margin-left: 20px;
+}
+#top #top-menu span:hover{
+    color: #FFFFFF;
+}
+#top #menu-bottomleft{
+    float: left;
+    margin-top: 70px;
+    font-size:30px;
+    color:#e0e0e0;
+    margin-left: 80px;
+}
+#top #menu-bottomleft span{
+    margin-right: 150px;
+    color:#e0e0e0;
+}
+#top #menu-bottomleft span:hover{
+    color: #FFFFFF;
+}
+
+#body .card-box{
+    margin-top: 80px;
+    margin-left: 50px;
+    float: left;
+    margin-right: 55px;
+}
+#body .card-box .card-circle{
+    background:#4990e2;
+    width:80px;
+    height:80px;
+    border-radius:100%;
+    position: relative;
+    top: -450px;
+    left: 160px;
+    box-shadow:0 -2px 12px 0 rgba(0,0,0,0.14);
+    text-align: center;
+    color: #FFFFFF;
+}
+#body .card-box .card-circle .circle-name{
+    font-size:30px;
+    color:#FFFFFF;
+    position: relative;
+    top: 20px;
+}
+#body .card-box .card-body{
+    background:#ffffff;
+    width:400px;
+    height:400px;
+    box-shadow:0 -2px 12px 0 rgba(0,0,0,0.14);
+}
+#body .card-box .card-body .class-title{
+    width: 320px;
+    /*background: red;*/
+    /*margin-top: 80px;*/
+
+    margin: 0 auto;
+    position: relative;
+    top: 80px;
+    border-bottom:1px solid #e6e6e6;
+    font-size:25px;
+    color:#4a4a4a;
+    text-align: center;
+    /*margin-bottom: 80px;*/
+}
+/*卡片考试信息*/
+#body .card-box .card-body .class-textlist {
+    /*margin-top: 40px;*/
+    /*background: yellow;*/
+    position: relative;
+    top: 80px;
+    width: 360px;
+    height: 170px;
+    margin: 0 auto;
+}
+#body .card-box .card-body .class-textlist .text-message{
+    margin-top: 30px;
+}
+#body .card-box .card-body .class-textlist .text-message .message-circle{
+    float: left;
+    background:#f80000;
+    width:15px;
+    height:15px;
+    border-radius:15px;
+}
+#body .card-box .card-body .class-textlist .text-message .text-name{
+    float: left;
+    position: relative;
+    left: 30px;
+    top: -5px;
+    font-size:20px;
+    color:#4a4a4a;
+}
+#body .card-box .card-body .class-textlist .text-message .text-time{
+    font-size:15px;
+    color:#4a4a4a;
+    position: relative;
+    left: 10px;
+    text-align: right;
+}
+
+#body .card-box .card-body .button{
+    /*background: green;*/
+    position: relative;
+    top: 130px;
+    height: 63px;
+    background:#ffffff;
+    box-shadow:0 -2px 12px 0 rgba(0,0,0,0.14);
+    text-align: center;
+}
+#body .card-box .card-body .button .button-name{
+    /*margin: 0 auto;*/
+    font-size:25px;
+    color:#4a4a4a;
+    position: relative;
+    top: 10px;
+    left: 40px;
+    border: none;
+    background: #FFFFFF;
+    margin-right: 50px;
+}
+#body .card-box .card-body .button #btn-del{
+    color: #ce1d21;
+}
+#body .card-box .card-body .button .button-time{
+    position: relative;
+    right: -35px;
+    top: 30px;
+    font-size:15px;
+    color:#9b9b9b;
+}
+#body #btn-addclass{
+    float: left;
+    margin-top: 80px;
+    margin-left: 50px;
+}

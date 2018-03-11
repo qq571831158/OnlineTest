@@ -4,19 +4,19 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
+
     @RequestMapping(path = {"/",})
     public String index(){
         return "login";
     }
 
-    @RequestMapping(path = {"toTeacherIndex",})
+    @RequestMapping(path = {"/toTeacherIndex",})
     public String toTeacherIndex(){
-        return "teacher/index";
+        return "teacher/home";
     }
 
-    @RequestMapping(path = {"toStudentIndex",})
+    @RequestMapping(path = {"/toStudentIndex",})
     public String toStudentIndex(){
         return "student/index";
     }
-
 }
