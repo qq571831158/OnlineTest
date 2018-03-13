@@ -28,18 +28,27 @@ public class CourseDAOTest {
 
     @Test
     public void selectByTeaId() throws Exception {
-        List<Course>list = courseDAO.selectByTeaId(1);
-        System.out.println(list.get(1).getCourseName());
+        List<Course>list = courseDAO.selectByTeaId(2);
+        for (Course c : list){
+            System.out.println(c.getCreateTime());
+            System.out.println(c.getCourseName());
+        }
     }
 
     @Test
     public void insertCourse() throws Exception {
         Course course = new Course();
-        course.setCourseName("c++语言程序设计");
-        course.setTeaId(1);
+        course.setCourseName("操作系统");
+        course.setTeaId(2);
         course.setCreateTime(new Date());
         course.setCourseStuNum(30);
+        Course c1 = course;
+        c1.setCourseName("数据库系统概论");
+        Course c2 = course;
+        c2.setCourseName("计算机网络");
         courseDAO.insertCourse(course);
+        courseDAO.insertCourse(c1);
+        courseDAO.insertCourse(c2);
     }
 
     @Test

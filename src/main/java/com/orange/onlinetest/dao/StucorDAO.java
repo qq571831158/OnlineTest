@@ -25,6 +25,9 @@ public interface StucorDAO {
     @Select({"select ",SELECT_FILEDS,"from",TABLE_NAME,"where id = #{id}"} )
     Stucor selectById(int id);
 
+    @Select({"select ",SELECT_FILEDS,"from",TABLE_NAME,"where student_id = #{stuId}"} )
+    List<Stucor> selectByStuId(int stuId);
+
 
     @Insert({"insert into",TABLE_NAME,"(",INSERT_FILEDS,") values(#{courseId},#{studentId},#{createTime},#{grade},#{testId},#{teaId})"})
     int insertStucor(Stucor course);

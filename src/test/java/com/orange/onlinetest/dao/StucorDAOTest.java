@@ -28,11 +28,11 @@ public class StucorDAOTest {
     @Test
     public void insertStucor() throws Exception {
         Stucor stucor = new Stucor();
-        stucor.setCourseId(1);
+        stucor.setCourseId(5);
         stucor.setStudentId(2014001);
         stucor.setCreateTime(new Date());
         stucor.setGrade(95);
-        stucor.setTeaId(1);
+        stucor.setTestId(1);
         stucor.setTeaId(1);
         stucorDAO.insertStucor(stucor);
     }

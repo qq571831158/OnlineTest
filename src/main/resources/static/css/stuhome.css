@@ -1,33 +1,16 @@
-body,ul,p,h1,h2,h3,h4,h5,dl,dd,form,input,textarea,select {
-    padding: 0px;
-    margin: 0px;
-    font-family: Arial;
-}
-li{
-    list-style: none;
-}
-image{
-    border: none;
-}
-a,a:hover{
-    text-decoration:none; color:#333
-}
-a{
-    text-decoration: none;}
-
-a:hover{
-    text-decoration: none;
-}
-em{
-    font-style:normal;
-}
+body,ul,p,h1,h2,h3,h4,h5,dl,dd,form,input,textarea,select{  padding: 0px;  margin: 0px;  font-family: Arial; }
+li{  list-style: none;  }
+image{border: none;}
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+em{ font-style:normal;}
 
 body{
     background: #FAFAFB;
     width: 100%;
 }
 #top{
-    background:#464e60;
+    background:#033b57;
     border: none;
     height: 200px;
     box-shadow:0 5px 4px 0 rgba(155,155,155,0.73);
@@ -64,29 +47,20 @@ body{
 #top #top-menu #menu-right span{
     margin-left: 20px;
 }
-#top #top-menu span:hover{
-    color: #FFFFFF;
-}
 #top #menu-bottomleft{
     float: left;
     margin-top: 70px;
     font-size:30px;
-    color:#e0e0e0;
+    color:#ffffff;
     margin-left: 80px;
 }
-#top #menu-bottomleft span{
-    margin-right: 150px;
-    color:#e0e0e0;
+#body .card-cell{
+    float: left;
 }
-#top #menu-bottomleft span:hover{
-    color: #FFFFFF;
-}
-
 #body .card-box{
     margin-top: 80px;
-    margin-left: 50px;
-    float: left;
-    margin-right: 55px;
+    margin-left: 28px;
+    margin-right: 20px
 }
 #body .card-box .card-circle{
     background:#4990e2;
@@ -139,14 +113,27 @@ body{
 #body .card-box .card-body .class-textlist .text-message{
     margin-top: 30px;
 }
-#body .card-box .card-body .class-textlist .text-message .message-circle{
+#body .card-box .card-body .class-textlist .text-message .message-circle-red{
+    float: left;
+    background:#9B9B9B;
+    width:15px;
+    height:15px;
+    border-radius:15px;
+}
+#body .card-box .card-body .class-textlist .text-message .message-circle-green{
     float: left;
     background:#f80000;
     width:15px;
     height:15px;
     border-radius:15px;
 }
-
+#body .card-box .card-body .class-textlist .text-message .message-circle-yellow{
+    float: left;
+    background:#4990E2;
+    width:15px;
+    height:15px;
+    border-radius:15px;
+}
 #body .card-box .card-body .class-textlist .text-message .text-name{
     float: left;
     position: relative;
@@ -177,24 +164,15 @@ body{
     font-size:25px;
     color:#4a4a4a;
     position: relative;
-    top: 10px;
+    top: 20px;
     left: 40px;
-    border: none;
-    background: #FFFFFF;
-    margin-right: 50px;
-}
-#body .card-box .card-body .button #btn-del{
-    color: #ce1d21;
+
+
 }
 #body .card-box .card-body .button .button-time{
     position: relative;
-    right: -35px;
+    right: -125px;
     top: 30px;
     font-size:15px;
     color:#9b9b9b;
-}
-#body #btn-addclass{
-    float: left;
-    margin-top: 80px;
-    margin-left: 50px;
 }

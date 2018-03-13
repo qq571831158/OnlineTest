@@ -10,13 +10,10 @@ public class Test implements Serializable  {
 
     private int testPaperId;
 
+    private String questions;
+
     public Test(){}
 
-    public Test(int id, int questionId, int testPaperId) {
-        this.id = id;
-        this.questionId = questionId;
-        this.testPaperId = testPaperId;
-    }
 
     public int getId() {
         return id;
@@ -34,11 +31,20 @@ public class Test implements Serializable  {
         this.questionId = questionId;
     }
 
-    public int getTestpaperId() {
+
+    public int getTestPaperId() {
         return testPaperId;
     }
 
-    public void setTestpaperId(int testPaperId) {
+    public void setTestPaperId(int testPaperId) {
         this.testPaperId = testPaperId;
+    }
+
+    public String getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(String questions) {
+        this.questions = questions;
     }
 }

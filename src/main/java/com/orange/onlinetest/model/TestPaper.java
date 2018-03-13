@@ -1,10 +1,18 @@
 package com.orange.onlinetest.model;
 
+import org.springframework.data.redis.core.index.PathBasedRedisIndexDefinition;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 
 public class TestPaper extends BaseModel implements Serializable {
+
+    private static final Byte STATUS_END = 1;//考试结束
+
+    private static final Byte STATUS_TESTING = 0;//考试进行中
+
+    private static final Byte STATUS_NO_START = -1;//考试尚未开始
 
     private String title;
 
@@ -20,18 +28,17 @@ public class TestPaper extends BaseModel implements Serializable {
 
     private String result;
 
+    private String questions;
+
+    private int courseId;
+
+    private Date startTime;
+
+    private String testStartTime;
+
+    private Byte status;
     public TestPaper(){}
 
-    public TestPaper(int id, Date createTime, Date lastModify, String title, String describution, String content, int lastTime, Date expireTime, int teacherId, String result) {
-        super(id, createTime, lastModify);
-        this.title = title;
-        this.describution = describution;
-        this.content = content;
-        this.lastTime = lastTime;
-        this.expireTime = expireTime;
-        this.teacherId = teacherId;
-        this.result = result;
-    }
 
     public String getTitle() {
         return title;
@@ -87,5 +94,45 @@ public class TestPaper extends BaseModel implements Serializable {
 
     public void setResult(String result) {
         this.result = result;
+    }
+
+    public String getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(String questions) {
+        this.questions = questions;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
+
+    public String getTestStartTime() {
+        return testStartTime;
+    }
+
+    public void setTestStartTime(String testStartTime) {
+        this.testStartTime = testStartTime;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 }

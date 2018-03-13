@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>学生端首页</title>
+    <script src="${request.contextPath}/jquery-2.1.1/jquery.js"></script>
+    <script src="${request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="${request.contextPath}/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="${request.contextPath}/css/stuhome.css" type="text/css">
+</head>
+<body>
+<!--弹框-->
+<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
+<!-- <div class="modal-dialog" role="document">-->
+<!-- <div class="modal-content">-->
+<!-- <div class="modal-header">-->
+<!--  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>-->
+<!--  <h4 class="modal-title" id="myModalLabel">新增</h4>-->
+<!-- </div>-->
+<!-- <div class="modal-body">-->
+<!-- -->
+<!--  <div class="form-group">-->
+<!--  <label for="txt_departmentname">部门名称</label>-->
+<!--  <input type="text" name="txt_departmentname" class="form-control" id="txt_departmentname" placeholder="部门名称">-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--  <label for="txt_parentdepartment">上级部门</label>-->
+<!--  <input type="text" name="txt_parentdepartment" class="form-control" id="txt_parentdepartment" placeholder="上级部门">-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--  <label for="txt_departmentlevel">部门级别</label>-->
+<!--  <input type="text" name="txt_departmentlevel" class="form-control" id="txt_departmentlevel" placeholder="部门级别">-->
+<!--  </div>-->
+<!--  <div class="form-group">-->
+<!--  <label for="txt_statu">描述</label>-->
+<!--  <input type="text" name="txt_statu" class="form-control" id="txt_statu" placeholder="状态">-->
+<!--  </div>-->
+<!-- </div>-->
+<!-- <div class="modal-footer">-->
+<!--  <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span>关闭</button>-->
+<!--  <button type="button" id="btn_submit" class="btn btn-primary" data-dismiss="modal"><span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>保存</button>-->
+<!-- </div>-->
+<!-- </div>-->
+<!-- </div>-->
+<!-- </div>-->
+<!--<script>-->
+<!--$("#btn_add").click(function () {-->
+<!--$("#myModalLabel").text("新增");-->
+<!--$('#myModal').modal();-->
+<!--});-->
+<!--</script>-->
+
+<div id="top">
+    <img id="logo"src="${request.contextPath}/image/logo.Examroom.png">
+    <ul id="top-menu">
+        <li id="menu-left"><span>首页</span><span>我的成绩</span></li>
+        <li id="menu-right"><span id="username">${user.name}</span>同学,您好!<a id="close-icon">退出</a><span>通知</span><span>帮助</span></li>
+    </ul>
+    <div style="clear: both"></div>
+    <div id="menu-bottomleft" >
+        <span >我的班级</span>
+    </div>
+    <!--<div id="menu-bottomright"><img src="${request.contextPath}/image/add-icon.png"><span>加入班级</span></div>-->
+    <div style="clear: both"></div>
+
+</div>
+<div style="clear: both"></div>
+
+<div id="body">
+    <#list vos as vo>
+    <div class="card-cell">
+        <div class="card-box">
+            <div class="card-body">
+                <div class="class-title">${vo.course.courseName}</div>
+                <!--考试信息-->
+                <div class="class-textlist">
+                    <#if vo.msg??>
+                        <ul class="text-message">
+                            <!--<div class="message-circle"></div>-->
+                            <div class="text-name">${vo.msg}</div>
+                            <div class="text-time"></div>
+                            <div style="clear: both"></div>
+                        </ul>
+                        <#else>
+                            <#list vo.tests as test>
+                                <ul class="text-message">
+                                    <#if (test.status==1)>
+                                            <div class="message-circle-green"></div>
+                                        <#elseif (test.status==0)>
+                                            <div class="message-circle-yellow"></div>
+                                        <#else>
+                                            <div class="message-circle-red"></div>
+                                    </#if>
+                                    <div class="text-name">${test.title}</div>
+                                    <!--<div class="text-time">今天19:00开始</div>-->
+                                    <div class="text-time">${test.testStartTime}开始</div>
+                                    <div style="clear: both"></div>
+                                </ul>
+                            </#list>
+                    </#if>
+                </div>
+                <div class="button"><span class="button-name">详情</span><span class=" button-time">${vo.course.createTime?string("yyyy/MM/dd")}</span></div>
+            </div>
+            <div class="card-circle"><span class="circle-name">${vo.indexChar}</span></div>
+        </div>
+    </div>
+    </#list>
+    <div style="clear: both;"></div>
+</div>
+
+</body>
+</html>

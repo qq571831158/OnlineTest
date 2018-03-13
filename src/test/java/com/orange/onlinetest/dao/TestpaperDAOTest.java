@@ -23,8 +23,8 @@ public class TestpaperDAOTest {
 
     @Test
     public void selectById() {
-        TestPaper testpaper = testpaperDAO.selectById(1);
-        System.out.println(testpaper.getTitle());
+        TestPaper testpaper = testpaperDAO.selectById(15);
+        System.out.println(testpaper.getStatus());
     }
 
     @Test
