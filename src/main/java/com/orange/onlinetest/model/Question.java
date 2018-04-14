@@ -6,7 +6,7 @@ import java.util.Date;
 
 public class Question extends BaseModel implements Serializable{
 
-    private String title;
+       private String title;
 
     private String content;
 
@@ -16,15 +16,18 @@ public class Question extends BaseModel implements Serializable{
 
     private int teacherId;
 
+    private int questionType;
+
     public Question(){}
 
-    public Question(int id, Date createTime, Date lastModify, String title, String content, String answer, int score, int teacherId) {
+    public Question(int id, Date createTime, Date lastModify, String title, String content, String answer, int score, int teacherId,int questionType) {
         super(id, createTime, lastModify);
         this.title = title;
         this.content = content;
         this.answer = answer;
         this.score = score;
         this.teacherId = teacherId;
+        this.questionType = questionType;
     }
 
     public String getTitle() {
@@ -65,5 +68,13 @@ public class Question extends BaseModel implements Serializable{
 
     public void setTeacherId(int teacherId) {
         this.teacherId = teacherId;
+    }
+
+    public int getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(int questionType) {
+        this.questionType = questionType;
     }
 }

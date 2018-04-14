@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -23,12 +24,19 @@ public class TestService {
     @Autowired
     private QuestionDAO questionDAO;
 
-    public  List<Question> getOneTest(int testPaperId){
+    public LinkedList<Question> getOneTest(int testPaperId){
         List<Test> list =  testDAO.selectByTestPaperId(testPaperId);
-        List<Question> questionList = new ArrayList<>();
+        LinkedList<Question> questionList = new LinkedList<>();
         for (Test test : list){
             questionList.add(questionDAO.selectById(test.getQuestionId()));
         }
         return questionList;
+    }
+
+    public int addTest(int questionId,int testPaperId){
+        Test test = new Test();
+        test.setQuestionId(questionId);
+        test.setTestpaperId(testPaperId);
+        return testDAO.addTest(test);
     }
 }

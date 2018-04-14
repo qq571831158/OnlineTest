@@ -5,7 +5,9 @@ import com.orange.onlinetest.model.HostHolder;
 import com.orange.onlinetest.model.Question;
 import com.orange.onlinetest.model.TestPaper;
 import com.orange.onlinetest.service.QuestionService;
+import com.orange.onlinetest.service.QuestionTypeService;
 import com.orange.onlinetest.service.TestPaperService;
+import com.orange.onlinetest.service.TestService;
 import com.orange.onlinetest.utils.OnlineTestUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,12 +34,25 @@ public class QuestionController {
 
     @Autowired
     private HostHolder hostHolder;
+
+    @Autowired
+    private QuestionTypeService questionTypeService;
+
+    @Autowired
+    private TestService testService;
+
+
     @RequestMapping(value = "addQuestion")
     @ResponseBody
-    public String addQuestion(String title,String content,String answer,Integer score){
+    public String addQuestion(String questionTypeId,String  testPaperId,String title,String content,String answer,Integer score){
         try{
-            if (questionService.addQuesion(title,content,answer,score,hostHolder.getTeas().getId())>0){
-                return OnlineTestUtil.getJSONString(100,"提交成功");
+            int questionId = questionService.addQuesion(title,content,answer,score,Integer.parseInt(questionTypeId),hostHolder.getTeas().getId());
+            if (questionId>0){
+                if (testService.addTest(questionId,Integer.parseInt(testPaperId))>0){
+                    return OnlineTestUtil.getJSONString(100,"提交成功");
+                }else {
+                    return OnlineTestUtil.getJSONString(200,"失败");
+                }
             }else {
                 return OnlineTestUtil.getJSONString(200,"失败");
             }
@@ -51,6 +66,7 @@ public class QuestionController {
     public String toAddQuestionPage(Model model){
         List<TestPaper> testPaperList = testPaperService.getAllTestPapersByTeacherId(hostHolder.getTeas().getId());
         model.addAttribute("testPapers",testPaperList);
+        model.addAttribute("questionTypes",questionTypeService.selectAllQuestionType());
         return "teacher/addQuestion";
     }
 

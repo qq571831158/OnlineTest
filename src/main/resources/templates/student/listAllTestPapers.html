@@ -30,7 +30,7 @@
         <td>${user.name}</td>
         <td>${testPaper.createTime?string("yyyy-MM-dd HH:mm:ss")}</td>
         <td>${testPaper.expireTime?string("yyyy-MM-dd HH:mm:ss")}</td>
-        <td><a href=""></a>考试</td>
+        <td><a href="/test/toTest?testPaperId=${testPaper.id}">考试</a></td>
     </tr>
     </#list>
     </tbody>

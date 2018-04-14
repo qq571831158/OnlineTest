@@ -18,8 +18,8 @@ public interface TestDAO {
     String SELECT_FIELDS = "ID,"+INSERT_FIELDS;
 
     @Insert({"insert into",TABLE_NAME,"(",INSERT_FIELDS,") values(#{questionId},#{testPaperId})"})
-    void addTest(Test test);
+    int addTest(Test test);
 
-    @Select({"select ",SELECT_FIELDS,"from",TABLE_NAME,"where question_id = #{questionId}"})
+    @Select({"select ",SELECT_FIELDS,"from",TABLE_NAME,"where TESTPAPER_ID = #{testPaperId}"})
     List<Test> selectByTestPaperId(int testPaperId);
 }

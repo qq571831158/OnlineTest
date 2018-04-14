@@ -2,9 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>试卷</title>
+    <style>
+        .check{
+            border: 1px solid black;
+            width: 600px;
+            height: 30px;
+            margin: 0 auto;
+            margin-bottom: 30px;
+        }
+        .radio{
+            width: 20px;
+            height: 20px;
+            line-height: 30px;
+        }
+        .title{
+            margin-top: 100px;
+            margin-left: 500px;
+        }
+    </style>
 </head>
 <body>
-
+<h4 class="title">[单选题]</h4>
+<h4 class="title">${question.title}</h4>
+<div class="check">
+    <input type="radio" class="radio">delete from table-name where null=null
+</div>
+<div class="check">
+    <input type="radio" class="radio">delete from table-name where null=null
+</div>
+<div class="check">
+    <input type="radio" class="radio">delete from table-name where null=null
+</div>
+<div class="check">
+    <input type="radio" class="radio">delete from table-name where null=null
+</div>
+<a style="margin-left: 1200px " href="/test/next">下一题</a>
 </body>
 </html>

@@ -10,21 +10,23 @@
 
     <script>
         function btn() {
-            var content = UE.getEditor('editor').getContent();
+            var content = UE.getEditor('editor').getContentTxt();
             $.ajax({
                 type: "POST",
                 url: "/user/addQuestion",
                 data: {
+                    questionTypeId: $("#questionType").val(),
+                    testPaperId:$("#testPaper").val(),
                     title:  $("#title").val(),
                     content:content,
                     answer: $("#answer").val(),
                     score: $("#score").val()
                 },
                 dataType: "text",
-                success: function b (data) {
+                success: function(data) {
                     alert(data)
                 },
-                error: function a  (data) {
+                error: function (data) {
                     alert("incorrect")
                 },
             });
@@ -33,18 +35,18 @@
 </head>
 <body>
  选择试卷：
-        <select>
+        <select id="testPaper">
             <#list testPapers as testPaper>
-            <option value ="#{testPaper.id}">${testPaper.title}</option>
+            <option value ="${testPaper.id}">${testPaper.title}</option>
         </#list>
         </select>
         <br>
         选择试题类型：
-        <select>
-            <option value ="1">单选题</option>
-            <option value ="2">多选题</option>
-            <option value="3">问答题</option>
-            <option value="4">简答题</option>
+
+        <select id="questionType">
+            <#list questionTypes as questionType>
+            <option value ="${questionType.id}">${questionType.name}</option>
+            </#list>
         </select>
         <br>
         标题：<input type="text" id="title"
