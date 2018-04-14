@@ -34,7 +34,6 @@ public class IndexController {
         List<ViewObject> vos = stucorService.getStuIndexDataModel(hostHolder.getStus().getId());
         ModelAndView mv = new ModelAndView("student/home");
         mv.addObject("vos",vos);
-
         
         return mv;
     }
