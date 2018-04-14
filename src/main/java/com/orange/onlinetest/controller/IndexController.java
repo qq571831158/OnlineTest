@@ -26,7 +26,6 @@ public class IndexController {
 
     @RequestMapping(path = {"/toTeacherIndex",})
     public String toTeacherIndex(){
-
         return "teacher/home";
     }
 
