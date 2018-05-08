@@ -83,19 +83,21 @@
                         </ul>
                         <#else>
                             <#list vo.tests as test>
-                                <ul class="text-message">
-                                    <#if (test.status==1)>
+                                <a href="${request.contextPath}/test/toTest?testId=1">
+                                    <ul class="text-message">
+                                        <#if (test.status==1)>
                                             <div class="message-circle-green"></div>
-                                        <#elseif (test.status==0)>
-                                            <div class="message-circle-yellow"></div>
-                                        <#else>
-                                            <div class="message-circle-red"></div>
-                                    </#if>
-                                    <div class="text-name">${test.title}</div>
-                                    <!--<div class="text-time">今天19:00开始</div>-->
-                                    <div class="text-time">${test.testStartTime}开始</div>
-                                    <div style="clear: both"></div>
-                                </ul>
+                                            <#elseif (test.status==0)>
+                                                <div class="message-circle-yellow"></div>
+                                                <#else>
+                                                    <div class="message-circle-red"></div>
+                                        </#if>
+                                        <div class="text-name">${test.title}</div>
+                                        <!--<div class="text-time">今天19:00开始</div>-->
+                                        <div class="text-time">${test.testStartTime}开始</div>
+                                        <div style="clear: both"></div>
+                                    </ul>
+                                </a>
                             </#list>
                     </#if>
                 </div>

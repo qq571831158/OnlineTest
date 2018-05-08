@@ -23,12 +23,16 @@ public class TestService {
     @Autowired
     private QuestionDAO questionDAO;
 
-    public  List<Question> getOneTest(int testPaperId){
-        List<Test> list =  testDAO.selectByTestPaperId(testPaperId);
-        List<Question> questionList = new ArrayList<>();
-        for (Test test : list){
-            questionList.add(questionDAO.selectById(test.getQuestionId()));
-        }
-        return questionList;
+//    public  List<Question> getOneTest(int testPaperId){
+//        List<Test> list =  testDAO.selectByTestPaperId(testPaperId);
+//        List<Question> questionList = new ArrayList<>();
+//        for (Test test : list){
+//            questionList.add(questionDAO.selectById(test.getQuestionId()));
+//        }
+//        return questionList;
+//    }
+
+    public Test getTestById(int testId){
+        return testDAO.selectById(testId);
     }
 }

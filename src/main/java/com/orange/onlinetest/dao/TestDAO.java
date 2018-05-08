@@ -13,13 +13,13 @@ import java.util.List;
 public interface TestDAO {
     String TABLE_NAME = "TEST";
 
-    String INSERT_FIELDS = "QUESTION_ID,TESTPAPER_ID";
+    String INSERT_FIELDS = "TEST_PAPER_ID,TEST_PAPER_NAME,TEST_PAPER_SCORE,COURSE_ID,QUESTIONS";
 
     String SELECT_FIELDS = "ID,"+INSERT_FIELDS;
 
-    @Insert({"insert into",TABLE_NAME,"(",INSERT_FIELDS,") values(#{questionId},#{testPaperId})"})
+    @Insert({"insert into",TABLE_NAME,"(",INSERT_FIELDS,") values(#{testPaperId},#{testPaperName},#{testPaperScore},#{courseId},#{questions})"})
     void addTest(Test test);
 
-    @Select({"select ",SELECT_FIELDS,"from",TABLE_NAME,"where question_id = #{questionId}"})
-    List<Test> selectByTestPaperId(int testPaperId);
+    @Select({"select ",SELECT_FIELDS,"from",TABLE_NAME,"where id = #{testId}"})
+    Test selectById(int testId);
 }

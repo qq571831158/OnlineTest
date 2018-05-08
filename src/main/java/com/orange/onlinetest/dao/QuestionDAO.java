@@ -15,7 +15,7 @@ public interface QuestionDAO {
 
     String TABLE_NAME = "QUESTION";
 
-    String INSERT_FILEDS = "TITLE,CONTENT,ANSWER,SCORE,TEACHER_ID,CREATE_TIME,LAST_MODIFY";
+    String INSERT_FILEDS = "TITLE,CONTENT,ANSWER,TYPE,SCORE,TEACHER_ID,CREATE_TIME,LAST_MODIFY";
 
     String SELECT_FILEDS = "ID,"+INSERT_FILEDS;
 
@@ -25,7 +25,7 @@ public interface QuestionDAO {
     @Select({"select",SELECT_FILEDS,"from",TABLE_NAME,"where teacher_id = #{teacherId}"})
     List<Question> selectByTeacherId(int teacherId);
 
-    @Insert({"insert into",TABLE_NAME,"(",INSERT_FILEDS,") values(#{title},#{content},#{answer},#{score},#{teacherId},#{createTime},#{lastModify})"})
+    @Insert({"insert into",TABLE_NAME,"(",INSERT_FILEDS,") values(#{title},#{content},#{TYPE},#{answer},#{score},#{teacherId},#{createTime},#{lastModify})"})
     int insertQuesion(Question question);
 
 

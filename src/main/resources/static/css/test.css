@@ -1,0 +1,222 @@
+body,ul,p,h1,h2,h3,h4,h5,dl,dd,form,input,textarea,select{  padding: 0px;  margin: 0px;  font-family: Arial; }
+li{  list-style: none;  }
+image{border: none;}
+a{text-decoration: none;}
+a:hover{text-decoration: none;}
+em{ font-style:normal;}
+
+
+body{
+    background:#FAFAFB;
+    width: 100%;
+    height: 100%;
+}
+/*导航栏顶部*/
+#top{
+    background:#033B57;
+    box-shadow:0 5px 4px 0 #bcc5c7;
+    /*width:1440px;*/
+    height:120px;
+}
+#top img{
+    margin-top: 35px;
+    margin-left: 15px;
+    float: left;
+}
+#top #top-leftlist{
+    float: left;
+    /*background: red;*/
+    margin-left: 30px;
+    margin-top: 40px;
+}
+#top #top-leftlist li{
+    float: left;
+    /*background: yellow;*/
+    margin-right: 30px;
+    /*font-family:PingFangSC-Regular;*/
+    font-size:26px;
+    color:#e0e0e0;
+}
+#top #top-rightlist{
+    /*background: red;*/
+    float: right;
+    margin-top: 48px;
+}
+#top #top-rightlist li{
+    float: left;
+    margin-left: 15px;
+    margin-right: 20px;
+    /*font-family:PingFangSC-Regular;*/
+    font-size:26px;
+    color:#e0e0e0;
+
+}
+#body{
+    background:#ffffff;
+    border-radius:10px;
+    width:1200px;
+    margin: 0 auto;
+    margin-top: 60px;
+    padding: 20px;
+}
+/*试卷样式*/
+#body #text-title{
+    /*background: yellow;*/
+    border-bottom:1px solid #e0e0e0;;
+
+}
+#body #text-title #title-left{
+    float: left;
+    height: 55px;
+    font-family:PingFangSC-Semibold;
+    font-size:26px;
+    color:#29363f;
+    line-height: 55px;
+    /*background: red;*/
+}
+#body #text-title #title-right{
+    float: right;
+    height: 55px;
+    margin-right: 30px;
+
+    /*line-height: 40px;*/
+
+}
+#body #text-title #title-right #text-time{
+    font-family:PingFangSC-Semibold;
+    font-size:26px;
+    color:#00c49e;
+    position: relative;
+    top: -10px;
+
+
+}
+#body #text-title #title-right img{
+    margin-right: 10px;
+    margin-top: 5px;
+}
+#body #text #questionbox {
+    /*background: yellow;*/
+    margin-top: 50px;
+}
+#body #text #questionbox #question-tab{
+    float: left;
+    background:#4990e2;
+    border-radius:20px;
+    border: none;
+    width:130px;
+    height:40px;
+    font-family:PingFangSC-Regular;
+    font-size:25px;
+    color:#ffffff;
+    text-align: center;
+    line-height: 40px;
+    margin-right: 20px;
+}
+#body #text #questionbox #question{
+    font-family:PingFangSC-Regular;
+    font-size:25px;
+    color:#4a4a4a;
+}
+
+
+/*radio样式*/
+.radio_box{ display:inline-block; position:relative;margin-left: 140px;margin-top: 60px;}
+
+.radio_box label{
+    width:30px;
+    height:30px;
+    position:absolute;
+    top:0; left:0;
+    border:1px solid #E0E0E0;
+    box-shadow:inset 0 1px 3px 0 rgba(224,224,224,98);
+    /*border:2px solid #ef4949;*/
+    border-radius:30px;
+    background:#fff;
+    cursor:pointer;
+}
+.radio_box input:checked + label:after{
+    content:'';
+    background:#4990e2;
+    width:17px;
+    height:17px;
+    position:absolute;
+    top:6px;
+    left:6px;
+    /*background:#ef4949;*/
+    border-radius:17px;
+}
+/*.radio_box input[type="radio"]:checked+label {*/
+/*border:1px solid #4990e2;*/
+/*}*/
+.radio_box em{
+    font-family:AvenirNext-Regular;
+    font-size:25px;
+    color:#4a4a4a;
+}
+.radio_box .radio-sel{
+    margin: 0 10px 0 25px;
+
+}
+/*按钮*/
+#body #text #btnbox{
+    float: right;
+}
+#body #text button{
+    border-radius:10px;
+    width:150px;
+    height:50px;
+    text-align: center;
+    margin-right: 40px;
+    font-size:18px;
+    color:#ffffff;
+    border: none;
+}
+#body #text #submitbtn{
+    background:#ff2324;
+}
+#body #text #nextbtn{
+    background:#00c49e;
+}
+#body  #text-card{
+    width: 100%;
+    /*background: yellow;*/
+    margin-top: 40px;
+    border-top:1px dashed #e0e0e0;
+}
+#body #text-card span{
+    font-family:PingFangSC-Semibold;
+    font-size:20px;
+    color:#4a4a4a;
+    position: relative;
+    top: -5px;
+}
+
+#body #text-card #card-numbox{
+    /*background: yellow;*/
+    width: 100%;
+    margin-top: 20px;
+}
+#body #text-card #card-numbox .num{
+    float: left;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+#body #text-card #card-numbox .num-bd{
+    background:#ffffff;
+    border:1px solid #bcc5c7;
+    width:34px;
+    height:34px;
+    border-radius:100%;
+    text-align: center;
+    line-height: 45px;
+}
+#body #text-card #card-numbox .num-bd .question-num{
+    font-size:20px;
+    color:#bcc5c7;
+}
+
+#body #text-card #card-numbox .num-bd .question-num-selected{
+    font-size:20px;
+    color:red;
+}

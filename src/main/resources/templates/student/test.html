@@ -1,10 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>考试页面</title>
+    <link href="${request.contextPath}/css/test.css" rel="stylesheet">
+    <script src="${request.contextPath}/script/test.js"></script>
 </head>
+
+
 <body>
+<div id="top">
+    <img src="${request.contextPath}/image/logo.Examroom.png">
+    <ul id="top-leftlist" >
+        <li>首页</li>
+        <li>我的考试</li>
+        <li>我的成绩</li>
+    </ul>
+    <ul id="top-rightlist" >
+        <li>${user.name}同学,您好!</li>
+        <li>通知</li>
+    </ul>
+    <div style="clear: both"></div>
+</div>
+<div id="body">
+    <div id="text-title">
+        <div id="title-left">
+            <span id="text-name">${getTestResponse.testPaperName}</span>·<span id="text-score">${getTestResponse.testScore}</span>分
+        </div>
+        <div id="title-right" >
+            <img src="${request.contextPath}/image/stop-icon.png" >
+            <span id="text-time">
+                <span id="time-hour">01</span>:<span id="time-minute">00</span>:<span id="time-second">00</span>
+            </span>
+        </div>
+        <script>
+
+            var Ohour=parseInt(document.getElementById("time-hour").innerHTML);
+
+            var Ominute=parseInt(document.getElementById("time-minute").innerHTML);
+            var Osecond=parseInt(document.getElementById("time-second").innerHTML);
+            var maxtime=Ohour*3600+Ominute*60+Osecond;
+
+            function time() {
+
+                if(maxtime>=0){
+                    var newhour=Math.floor(maxtime/3600);
+                    var newminute=Math.floor(maxtime%3600/60);
+                    var newsecond=Math.floor(maxtime%3600%60);
+
+                    if(newhour<10){
+                        document.getElementById("time-hour").innerHTML="0"+newhour;
+
+                    }
+                    else {
+                        document.getElementById("time-hour").innerHTML=newhour;
+                    }
+                    if(newminute<10){
+                        document.getElementById("time-minute").innerHTML="0"+newminute;
+                    }
+                    else {
+                        document.getElementById("time-minute").innerHTML=newminute;
+                    }
+                    if (newsecond<10){
+                        document.getElementById("time-second").innerHTML="0"+newsecond;
+                    }
+                    else {
+                        document.getElementById("time-second").innerHTML=newsecond;
+
+                    }
+
+
+                    --maxtime;
+//                    alert(newhour+":"+newminute+":"+newsecond);
+                }
+                else {
+                    clearInterval(timer);
+                    alert("考试结束!")
+                }
+            }
+            timer=setInterval("time()",1000);
+
+        </script>
+        <div style="clear: both"></div>
+    </div>
+    <div id="text">
+        <div id="questionbox">
+            <div id="question-tab">${getTestResponse.questionType}</div>
+            <p id="question">${getTestResponse.questionTitle}</p>
+            <div style="clear: both"></div>
+        </div>
+
+       <!--选项-->
+        <#if getTestResponse.selections??>
+            <#list getTestResponse.selections as selection>
+                <span class="radio_box">
+
+                   <input type="radio" id="${selection}" name="radio" >
+
+                   <label for="${selection}"></label>
+                    <em>&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                    <em>
+                        ${selection}
+                    </em>
+                 </span>
+
+                <br><br>
+            </#list>
+
+        </#if>
+
+        <!--<span class="radio_box">-->
+
+                   <!--<input type="radio" id="radio_2" name="radio">-->
+
+                   <!--<label for="radio_2"></label>-->
+                    <!--<em class="radio-sel">B:</em>-->
+                   <!--<em class="radio-name">选项2</em>-->
+
+         <!--</span>-->
+        <!--<br><br>-->
+        <!--<span class="radio_box">-->
+
+                   <!--<input type="radio" id="radio_2" name="radio">-->
+
+                   <!--<label for="radio_3"></label>-->
+                    <!--<em class="radio-sel">C:</em>-->
+                   <!--<em class="radio-name">选项3</em>-->
+
+         <!--</span>-->
+        <!--<br><br>-->
+        <!--<span class="radio_box">-->
+
+                   <!--<input type="radio" id="radio_2" name="radio">-->
+
+                   <!--<label for="radio_4"></label>-->
+                    <!--<em class="radio-sel">D:</em>-->
+                   <!--<em class="radio-name">选项4</em>-->
+
+         <!--</span>-->
+        <!--<br><br>-->
+
+        <!--按钮-->
+
+        <div id="btnbox">
+        <span>
+            <button id="submitbtn">提交试卷</button>
+        </span>
+            <span>
+                <input type="hidden" id="nowQuestionNum" value="${getTestResponse.nowQuestionNum}">
+                <input type="hidden" id="testId" value="${getTestResponse.testId}">
+               <button id="nextbtn" onclick="getNextQuestion()">下一题</button>
+            </span>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+
+    <div id="text-card">
+        <div id="card-title">
+            <img src="${request.contextPath}/image/Rectangle-card.png" style="height: 25px;margin-top: 10px" >
+            <span>答题卡</span>
+            <img src="${request.contextPath}/image/triangle-card.png" style="position: relative;top: -10px;">
+        </div>
+        <div id="card-numbox">
+            <ul class="numbox">
+                <#list 1..getTestResponse.questionsLength as questionNum>
+                    <#if questionNum == getTestResponse.nowQuestionNum>
+                        <a href= '${request.contextPath}/test/getQuestionById?nowQuestionId=${questionNum}&testId=${getTestResponse.testId}'>
+                            <li class="num">
+                                <div class="num-bd">
+                            <span class="question-num-selected">
+                                    ${questionNum}
+                            </span>
+                                </div>
+                            </li>
+                        </a>
+                        <#else>
+                            <a href= '${request.contextPath}/test/getQuestionById?nowQuestionId=${questionNum}&testId=${getTestResponse.testId}'>
+                                <li class="num">
+                                    <div class="num-bd">
+                            <span class="question-num">
+                                    ${questionNum}
+                            </span>
+                                    </div>
+                                </li>
+                            </a>
+                    </#if>
+
+                </#list>
+
+                <!--<li class="num">-->
+                    <!--<div class="num-bd"><span class="question-num">1</span></div>-->
+                <!--</li>-->
+                <div style="clear: both;"></div>
+            </ul>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>

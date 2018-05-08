@@ -35,4 +35,8 @@ public class QuestionService {
     public List<Question> getAllQuestion(int teacherId){
         return questionDAO.selectByTeacherId(teacherId);
     }
+
+    public Question getQuestionById(int questionId){
+        return questionDAO.selectById(questionId);
+    }
 }

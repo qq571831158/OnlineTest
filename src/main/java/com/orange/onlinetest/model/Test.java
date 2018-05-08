@@ -4,13 +4,22 @@ import java.io.Serializable;
 
 public class Test implements Serializable  {
 
-    private int id;
+    public static final String QUESTION_SPLIT_STRING = ";";
 
-    private int questionId;
+
+    private int id;
 
     private int testPaperId;
 
+    private String testPaperName;
+
+    private int testPaperScore;
+
+    private int courseId;
+
     private String questions;
+
+
 
     public Test(){}
 
@@ -23,14 +32,29 @@ public class Test implements Serializable  {
         this.id = id;
     }
 
-    public int getQuestionId() {
-        return questionId;
+    public String getTestPaperName() {
+        return testPaperName;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setTestPaperName(String testPaperName) {
+        this.testPaperName = testPaperName;
     }
 
+    public int getTestPaperScore() {
+        return testPaperScore;
+    }
+
+    public void setTestPaperScore(int testPaperScore) {
+        this.testPaperScore = testPaperScore;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
 
     public int getTestPaperId() {
         return testPaperId;
