@@ -6,42 +6,33 @@ import java.util.Date;
 
 public class Score extends BaseModel implements Serializable {
 
-    private int studentId;
+    private Integer studentId;
 
-    private int testpaperId;
+    private Integer testId;
 
-    private int score;
+    private Integer score;
 
-    public Score(){}
-
-    public Score(int id, Date createTime, Date lastModify, int studentId, int testpaperId, int score) {
-        super(id, createTime, lastModify);
-        this.studentId = studentId;
-        this.testpaperId = testpaperId;
-        this.score = score;
-    }
-
-    public int getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
 
-    public int getTestpaperId() {
-        return testpaperId;
+    public Integer getTestId() {
+        return testId;
     }
 
-    public void setTestpaperId(int testpaperId) {
-        this.testpaperId = testpaperId;
+    public void setTestId(Integer testId) {
+        this.testId = testId;
     }
 
-    public int getScore() {
+    public Integer getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(Integer score) {
         this.score = score;
     }
 }

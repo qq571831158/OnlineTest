@@ -1,6 +1,9 @@
 package com.orange.onlinetest.cache;
 
 import com.orange.onlinetest.model.Question;
+import com.sun.xml.internal.ws.util.ASCIIUtility;
+import org.apache.ibatis.ognl.ASTConst;
+import org.apache.tomcat.util.buf.Ascii;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +27,7 @@ public class QuestionCacheTest {
     @Test
     public void hset() throws Exception {
         Map<Integer,Question> map = new HashMap<>();
-        map.put(1,new Question(1,new Date(),new Date(),"this is the first test","nice",1,"ss",10,1));
+//        map.put(1,new Question(1,new Date(),new Date(),"this is the first test","nice",1,"ss",10,1));
         questionCache.hset(map,new com.orange.onlinetest.model.Test());
     }
 

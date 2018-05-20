@@ -6,53 +6,35 @@ import java.util.Date;
 
 public class Answer extends BaseModel implements Serializable{
 
-    private int studentId;
+    private Integer studentId;
 
-    private int questionId;
+    private Integer testId;
 
-    private int testpaperId;
-
-    private String answer;
+    private String answers;
 
     public Answer(){}
 
-    public Answer(int id, Date createTime, Date lastModify, int studentId, int questionId, int testpaperId, String answer) {
-        super(id, createTime, lastModify);
-        this.studentId = studentId;
-        this.questionId = questionId;
-        this.testpaperId = testpaperId;
-        this.answer = answer;
-    }
-
-    public int getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(int studentId) {
+    public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
 
-    public int getQuestionId() {
-        return questionId;
+    public Integer getTestId() {
+        return testId;
     }
 
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
+    public void setTestId(Integer testId) {
+        this.testId = testId;
     }
 
-    public int getTestpaperId() {
-        return testpaperId;
+    public String getAnswers() {
+        return answers;
     }
 
-    public void setTestpaperId(int testpaperId) {
-        this.testpaperId = testpaperId;
-    }
-
-    public String getAnswer() {
-        return answer;
-    }
-
-    public void setAnswer(String answer) {
-        this.answer = answer;
+    public void setAnswers(String answers) {
+        this.answers = answers;
     }
 }

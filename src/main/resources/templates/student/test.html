@@ -6,10 +6,9 @@
     <title>考试页面</title>
     <link href="${request.contextPath}/css/test.css" rel="stylesheet">
     <script src="${request.contextPath}/script/test.js"></script>
+    <script src="${request.contextPath}/jquery-2.1.1/jquery.js"></script>
 </head>
 
-
-<body>
 <div id="top">
     <img src="${request.contextPath}/image/logo.Examroom.png">
     <ul id="top-leftlist" >
@@ -31,7 +30,7 @@
         <div id="title-right" >
             <img src="${request.contextPath}/image/stop-icon.png" >
             <span id="text-time">
-                <span id="time-hour">01</span>:<span id="time-minute">00</span>:<span id="time-second">00</span>
+                <span id="time-hour">${getTestResponse.hour}</span>:<span id="time-minute">${getTestResponse.min}</span>:<span id="time-second">${getTestResponse.second}</span>
             </span>
         </div>
         <script>
@@ -85,6 +84,14 @@
         <div style="clear: both"></div>
     </div>
     <div id="text">
+        <#if msg??>
+            <input type="hidden" id="msg" name="msg" value="${msg}">
+        </#if>
+        <#if getTestResponse.selected??>
+            <#list getTestResponse.selected as selected>
+                 <input type="hidden" name="selected" value="${selected}">
+            </#list>
+        </#if>
         <div id="questionbox">
             <div id="question-tab">${getTestResponse.questionType}</div>
             <p id="question">${getTestResponse.questionTitle}</p>
@@ -92,65 +99,50 @@
         </div>
 
        <!--选项-->
-        <#if getTestResponse.selections??>
-            <#list getTestResponse.selections as selection>
-                <span class="radio_box">
-
-                   <input type="radio" id="${selection}" name="radio" >
-
-                   <label for="${selection}"></label>
-                    <em>&nbsp;&nbsp;&nbsp;&nbsp;</em>
-                    <em>
-                        ${selection}
-                    </em>
-                 </span>
-
-                <br><br>
-            </#list>
-
+        <#if getTestResponse.questionType == '单选题' || getTestResponse.questionType == '判断题'>
+            <#if getTestResponse.selections??>
+                <#list getTestResponse.selections as selection>
+                    <span class="radio_box">
+                       <input class="selection" type="radio" id="${selection}" name="radio" value="${selection}" onclick="setAnswer(this,'${getTestResponse.testId}')">
+                       <label for="${selection}"></label>
+                        <em>&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                        <em>
+                            ${selection}
+                        </em>
+                     </span>
+                    <br>
+                </#list>
+            </#if>
+        <#elseif getTestResponse.questionType == '多选题'>
+            <#if getTestResponse.selections??>
+                <#list getTestResponse.selections as selection>
+                    <span class="radio_box">
+                       <input class="selection" type="checkbox"  id="${selection}" name="radio" value="${selection}" onclick="setAnswer(this,'${getTestResponse.testId}')">
+                       <label for="${selection}"></label>
+                        <em>&nbsp;&nbsp;&nbsp;&nbsp;</em>
+                        <em>
+                            ${selection}
+                        </em>
+                    </span>
+                    <br>
+                </#list>
+            </#if>
+        <#else>
+                <textarea id="txt" style="margin: 20px; width: 70%; height: 260px; font-size: 23px" onblur="setTxtAnswer()">
+                    <#if getTestResponse.answer??>
+                         ${getTestResponse.answer}
+                    </#if>
+                </textarea>
         </#if>
-
-        <!--<span class="radio_box">-->
-
-                   <!--<input type="radio" id="radio_2" name="radio">-->
-
-                   <!--<label for="radio_2"></label>-->
-                    <!--<em class="radio-sel">B:</em>-->
-                   <!--<em class="radio-name">选项2</em>-->
-
-         <!--</span>-->
-        <!--<br><br>-->
-        <!--<span class="radio_box">-->
-
-                   <!--<input type="radio" id="radio_2" name="radio">-->
-
-                   <!--<label for="radio_3"></label>-->
-                    <!--<em class="radio-sel">C:</em>-->
-                   <!--<em class="radio-name">选项3</em>-->
-
-         <!--</span>-->
-        <!--<br><br>-->
-        <!--<span class="radio_box">-->
-
-                   <!--<input type="radio" id="radio_2" name="radio">-->
-
-                   <!--<label for="radio_4"></label>-->
-                    <!--<em class="radio-sel">D:</em>-->
-                   <!--<em class="radio-name">选项4</em>-->
-
-         <!--</span>-->
-        <!--<br><br>-->
-
-        <!--按钮-->
 
         <div id="btnbox">
         <span>
-            <button id="submitbtn">提交试卷</button>
+            <button id="submitbtn" onclick="submitAnswer()">提交试卷</button>
         </span>
             <span>
                 <input type="hidden" id="nowQuestionNum" value="${getTestResponse.nowQuestionNum}">
                 <input type="hidden" id="testId" value="${getTestResponse.testId}">
-               <button id="nextbtn" onclick="getNextQuestion()">下一题</button>
+               <button id="nextbtn" onclick="getNextQuestion('${getTestResponse.questionsLength}')">下一题</button>
             </span>
         </div>
         <div style="clear: both"></div>

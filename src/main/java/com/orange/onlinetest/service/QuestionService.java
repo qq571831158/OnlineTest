@@ -20,19 +20,21 @@ public class QuestionService {
     private QuestionDAO questionDAO;
 
 
-    public int addQuesion(String title,String content,String answer,int score,int teacherId){
+    public int addQuesion(String title,String content,String answer,int score,int teacherId,int type,String answerDesc){
         Question question = new Question();
         question.setTitle(title);
         question.setContent(content);
         question.setAnswer(answer);
         question.setScore(score);
         question.setTeacherId(teacherId);
+        question.setType(type);
+        question.setAnswerDesc(answerDesc);
         question.setCreateTime(new Date());
         question.setLastModify(new Date());
         return questionDAO.insertQuesion(question);
     }
 
-    public List<Question> getAllQuestion(int teacherId){
+    public List<Question> getAllQuestionByTeacherId(int teacherId){
         return questionDAO.selectByTeacherId(teacherId);
     }
 

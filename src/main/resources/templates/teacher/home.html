@@ -11,7 +11,12 @@
 <div id="top">
     <img id="logo"src="${request.contextPath}/image/logo.Examroom.png">
     <ul id="top-menu">
-        <li id="menu-left"><span>首页</span><span>我的题库</span><span>成绩管理</span><span>校广场</span></li>
+        <li id="menu-left">
+            <span>首页</span>
+            <span><a href="${request.contextPath}/user/toListAllTestPapers">我的题库</a></span>
+            <span>成绩管理</span>
+            <span>校广场</span>
+        </li>
         <li id="menu-right"><span id="username">${user.name}</span>老师,您好!<a id="close-icon">退出</a><span>通知</span><span>帮助</span></li>
     </ul>
     <div style="clear: both"></div>

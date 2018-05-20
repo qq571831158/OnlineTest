@@ -8,6 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.Map;
 
@@ -31,11 +32,16 @@ public class QuestionCache implements InitializingBean{
 
     public static final String SUBKEY_QUESTION_LENGTH = "questionLength";
 
+    public static final String SUBKEY_TEST_END_TIME = "testEndTime";
+
     private JedisPool jedisPool;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        jedisPool = new JedisPool("redis://localhost:6379/1");
+        JedisPoolConfig config = new JedisPoolConfig();
+        config.setTestOnBorrow(true);
+        config.setMaxIdle(8);
+        jedisPool = new JedisPool(config,"127.0.0.1",6379,10000,"123456");
     }
 
     public void hset(Map<Integer,Question> map, Test test){
@@ -49,6 +55,8 @@ public class QuestionCache implements InitializingBean{
             jedis.hset(KEY_QUESTIONS_PREFIX + test.getId(),SUBKEY_TEST_PAPER_NAME,test.getTestPaperName());
             jedis.hset(KEY_QUESTIONS_PREFIX + test.getId(),SUBKEY_TEST_SCORE,test.getTestPaperScore() + "");
             jedis.hset(KEY_QUESTIONS_PREFIX + test.getId(),SUBKEY_QUESTION_LENGTH,test.getQuestions().split(Test.QUESTION_SPLIT_STRING).length + "");
+            Long endTime = test.getStartTime().getTime() + 120 * 60 * 1000;
+            jedis.hset(KEY_QUESTIONS_PREFIX + test.getId(),SUBKEY_TEST_END_TIME,endTime.toString());
         }catch (Exception e){
             logger.error("question hset error"+e.getMessage());
             e.printStackTrace();

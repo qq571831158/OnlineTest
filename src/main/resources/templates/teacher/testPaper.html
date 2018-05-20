@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>试卷库</title>
+  <link rel="stylesheet" href="${request.contextPath}/css/default.css">
+  <link rel="stylesheet" href="${request.contextPath}/css/header.css">
+  <link rel="stylesheet" href="${request.contextPath}/css/style.css">
+  <link rel="stylesheet" href="${request.contextPath}/css/preview.css">
+</head>
+<body>
+  <div id="main">
+    <header>
+      <div class="header-top">
+        <ul class="top-left-bar">
+          <li>Examroom</li>
+          <li>首页</li>
+          <li class="selected">我的题库</li>
+          <li>考试|成绩</li>
+          <li>校广场</li>
+        </ul>
+        <div class="top-right">
+          <span class="name">程恒老师，您好！</span>
+          <span class="notice">通知</span>
+          <span class="help">帮助</span>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <ul class="bottom-left-bar">
+          <li> <a href="${request.contextPath}/user/toAddQuestionPage">试题库</a></li>
+          <li>试卷库</li>
+        </ul>
+        <div class="bottom-right">
+          <label for="" class="search-input">
+            <input id="search" type="text" placeholder="请输入试题名或试卷名搜索...">
+          </label>
+          <span class="new-built">新建</span>
+        </div>
+      </div>
+    </header>
+    <div class="content">
+      <ul class="bar-list">
+        <li>最新</li>
+        <li class="active">被应用</li>
+      </ul>
+      <div class="items">
+        <div class="item">
+          <h3>一月月考试卷</h3>
+          <div>应用范围：<span>一月月考试卷，期中考试试卷</span><time>2018/01/25</time></div>
+          <div>应用范围：<span>一月月考试卷，期中考试试卷</span><time>2018/01/25</time></div>
+          <div>应用范围：<span>一月月考试卷，期中考试试卷</span><time>2018/01/25</time></div>
+        </div>
+      </div>
+    </div>
+    <div class="add-test-pager">
+      <span class="basic-message">基本信息</span>
+      <div class="msg-content">
+        <label for="">
+          <span>试卷名: </span>
+          <input type="text" placeholder="请输入试卷名">
+        </label><br/>
+        <label for="">
+          <span>分值:</span>
+          0分
+        </label><br/>
+        <label for="">
+          <span>时长: </span>
+          <input type="text" placeholder="请设置考试时长">
+        </label>
+      </div>
+      <span class="save">保存</span>
+      <div class="fetch-test-paper">
+        <h3>第一部分</h3>
+        <div class="btns">
+          <span>获取试题</span>
+          <span>新建试题</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="${request.contextPath}/script/testPaper.js"></script>
+</body>
+</html>

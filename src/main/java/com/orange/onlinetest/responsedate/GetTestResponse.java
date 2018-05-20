@@ -24,6 +24,18 @@ public class GetTestResponse {
 
     private int nowQuestionNum;
 
+    private long endTime;
+
+    private String hour;
+
+    private String min;
+
+    private String second;
+
+    private Integer[] selected;
+
+    private String answer;
+
     public GetTestResponse(){}
 
     public GetTestResponse(int testId, String testPaperName, int questionId, String questionType, String questionTitle, int testScore, String[] selections,int questionsLength,int nowQuestionNum) {
@@ -109,5 +121,53 @@ public class GetTestResponse {
 
     public void setNowQuestionNum(int nowQuestionNum) {
         this.nowQuestionNum = nowQuestionNum;
+    }
+
+    public long getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
+    }
+
+    public String getHour() {
+        return hour;
+    }
+
+    public void setHour(String hour) {
+        this.hour = hour;
+    }
+
+    public String getMin() {
+        return min;
+    }
+
+    public void setMin(String min) {
+        this.min = min;
+    }
+
+    public String getSecond() {
+        return second;
+    }
+
+    public void setSecond(String second) {
+        this.second = second;
+    }
+
+    public Integer[] getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Integer[] selected) {
+        this.selected = selected;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
     }
 }

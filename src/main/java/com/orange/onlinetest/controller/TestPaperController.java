@@ -37,9 +37,10 @@ public class TestPaperController {
 
     @RequestMapping("toListAllTestPapers")
     public String listAllTestPapers(Model model){
+        System.out.println("helloworld");
         List<TestPaper> list = testPaperService.getAllTestPapersByTeacherId(hostHolder.getTeas().getId());
         model.addAttribute("testPapers",list);
-        return "teacher/listAllTestPapers";
+        return "teacher/testPaper";
     }
 
     @RequestMapping("addTestPaper")

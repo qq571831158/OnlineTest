@@ -1,6 +1,7 @@
 package com.orange.onlinetest.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Test implements Serializable  {
 
@@ -18,6 +19,8 @@ public class Test implements Serializable  {
     private int courseId;
 
     private String questions;
+
+    private Date startTime;
 
 
 
@@ -70,5 +73,13 @@ public class Test implements Serializable  {
 
     public void setQuestions(String questions) {
         this.questions = questions;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 }

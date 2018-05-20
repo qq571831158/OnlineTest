@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="${request.contextPath}/css/default.css">
+  <link rel="stylesheet" href="${request.contextPath}/css/header.css">
+  <link rel="stylesheet" href="${request.contextPath}/css/pager.css">
+</head>
+<body>
+  <div id="pager">
+    <header>
+      <div class="header-top">
+        <ul class="top-left-bar">
+          <li>Examroom</li>
+          <li>首页</li>
+          <li class="selected">我的题库</li>
+          <li>考试|成绩</li>
+          <li>校广场</li>
+        </ul>
+        <div class="top-right">
+          <span class="name">程恒老师，您好！</span>
+          <span class="notice">通知</span>
+          <span class="help">帮助</span>
+        </div>
+      </div>
+      <div class="header-bottom">
+        <ul class="bottom-left-bar">
+          <li class="selected">试题库</li>
+          <li>试卷库</li>
+        </ul>
+        <div class="bottom-right">
+          <label for="" class="search-input">
+            <input id="search" type="text" placeholder="请输入试题名或试卷名搜索...">
+          </label>
+          <span class="new-built">新建</span>
+        </div>
+      </div>
+    </header>
+    <div id="page-content">
+      <span class="save" >保存</span>
+      <label for="" id="category">
+        <span>题型：</span>
+        <select name="category" id="category-check">
+          <option value="1">单选题</option>
+          <option value="2">多选题</option>
+          <option value="3">判断题</option>
+          <option value="4">问答题</option>
+          <option value="5">综合题</option>
+          <option value="6">其他题</option>
+        </select>
+      </label><br/>
+      <label for="" id="titleLabel">
+        <span>题目：</span>
+        <input id="title" type="text" placeholder="请填写题目">
+      </label><br/>
+      <label for="" id="scoreLabel">
+        <span>分值：</span>
+        <input id="score" type="number" placeholder="请填写分值">
+      </label><br/>
+      <label for="" id="choose">
+        <span>选项：</span>
+        <div class="items">
+          <div>
+              <input type="radio" name="choose"><input type="text">
+          </div>
+          <div>
+              <input type="radio" name="choose" ><input type="text">
+          </div>
+        </div>
+        <button id="add-btns">添加选项</button>
+      </label>
+    </div>
+    <div class="solutions">
+      <div class="bar">
+        <span>答案解析</span>
+        <div class="line"></div>
+      </div>
+      <div class="editbox">
+          <textarea name="" id="solution-textarea" cols="30" rows="10"></textarea>
+      </div>
+    </div>
+  </div>
+  <script src="${request.contextPath}/jquery-2.1.1/jquery.js"></script>
+  <script>
+    $(function(){
+      var initialDOM = $('<div><input type="radio" name="choose"><input type="text"></div><div><input type="radio" name="choose"><input type="text"></div>');
+      $('.items').eq(0).html(initialDOM)
+    })
+  </script>
+  <script>
+    $("select#category-check").change(function() {
+      var val = $(this).val();
+      if (val === '4' || val === '5' || val === '6'){
+            console.log("enter this ")
+          $('#choose').css({'display':'none'});
+      }
+      if ($(this).val() === '3') {
+          var initialDom = $('<div>\n' +
+              '              <input type="radio" name="choose"><input type="text">\n' +
+              '          </div>\n' +
+              '          <div>\n' +
+              '              <input type="radio" name="choose" ><input type="text">\n' +
+              '          </div>');
+          $('.items').eq(0).html(initialDom)
+          $('#choose').css({'display': ''});
+      } 
+      if ($(this).val() === '2') {
+        var initialDOM = $('<div><input type="checkbox" name="choose"><input type="text"></div><div><input type="checkbox" name="choose"><input type="text"></div>');
+        $('.items').eq(0).html(initialDOM)
+        $('#choose').css({'display': ''});
+      } 
+      if ($(this).val() === '1') {
+            var initialDom = $('<div>\n' +
+                '              <input type="radio" name="choose"><input type="text">\n' +
+                '          </div>\n' +
+                '          <div>\n' +
+                '              <input type="radio" name="choose" ><input type="text">\n' +
+                '          </div>');
+          $('.items').eq(0).html(initialDom)
+        $('#choose').css({'display': ''});
+      }
+    });
+
+    $('#add-btns').click(function () {
+      var itemsDOM = $('.items').eq(0);
+      if ($('#category-check').val() === '1') {
+        var child = $('<div><input type="radio" name="choose"><input type="text"></div>')
+        itemsDOM.append(child)
+      } else if ($('#category-check').val() === '2') {
+        var child = $('<div><input type="checkbox" name="choose"><input type="text"></div>')
+        itemsDOM.append(child)
+      }
+    });
+
+    $('.save').click(function () {
+        var type = $('#category-check').val();
+        var title = $('#title').val();
+        var score = $('#score').val();
+        var answer = 65;
+        var answers = [];
+        var checkbox = $("input[name ='choose']");
+        var content = [];
+        var solution = $('#solution-textarea').val();
+        console.log(solution);
+        $(checkbox).each(function (index,domEle) {
+            console.log(index);
+            if ($(domEle).prop('checked')){
+                answer += index;
+                answers.push(answer);
+                answer = 65;
+            }
+            content.push($(domEle).next('input').val());
+        });
+        console.log(content);
+        console.log(answer);
+        $.ajax({
+            type: "POST",
+            url: "${request.contextPath}/user/addQuestion",
+            data: {
+                title: title,
+                contents:content,
+                answers: answers,
+                score: score,
+                type:type,
+                answerDesc:solution
+            },
+            dataType: "json",
+            success: function(data) {
+                if (data.code===200){
+                    alert(data.msg);
+                    window.location.reload();
+                }
+            },
+            error: function(data) {
+                alert("incorrect" + data)
+            }
+        });
+    });
+  </script>  
+</body>
+</html>

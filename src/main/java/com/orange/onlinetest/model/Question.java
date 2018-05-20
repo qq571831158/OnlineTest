@@ -25,6 +25,8 @@ public class Question extends BaseModel implements Serializable{
 
     private String content;
 
+    private String answerDesc;
+
     private int type;
 
     private String answer;
@@ -35,19 +37,8 @@ public class Question extends BaseModel implements Serializable{
 
     public Question(){}
 
-    @Override
-    public String toString() {
-        return "Question{" +
-                "title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", type=" + type +
-                ", answer='" + answer + '\'' +
-                ", score=" + score +
-                ", teacherId=" + teacherId +
-                '}';
-    }
 
-    public Question(int id, Date createTime, Date lastModify, String title, String content, int type, String answer, int score, int teacherId) {
+    public Question(int id, Date createTime, Date lastModify, String title, String content, String answerDesc, int type, String answer, int score, int teacherId) {
         super(id, createTime, lastModify);
         this.title = title;
         this.content = content;
@@ -55,6 +46,7 @@ public class Question extends BaseModel implements Serializable{
         this.answer = answer;
         this.score = score;
         this.teacherId = teacherId;
+        this.answerDesc = answerDesc;
     }
 
     public String getTitle() {
@@ -103,5 +95,13 @@ public class Question extends BaseModel implements Serializable{
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public String getAnswerDesc() {
+        return answerDesc;
+    }
+
+    public void setAnswerDesc(String answerDesc) {
+        this.answerDesc = answerDesc;
     }
 }

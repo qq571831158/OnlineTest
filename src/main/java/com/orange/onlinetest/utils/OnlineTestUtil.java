@@ -1,10 +1,20 @@
 package com.orange.onlinetest.utils;
 
 import com.alibaba.fastjson.JSONObject;
+import com.google.gson.Gson;
+import com.orange.onlinetest.kafka.Message;
+import com.orange.onlinetest.model.Answer;
+import com.orange.onlinetest.model.Question;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Date;
 
 /**
  * @Author orange
@@ -12,6 +22,7 @@ import java.security.MessageDigest;
  * @Date: 2018/1/9 8:32
  */
 public class OnlineTestUtil {
+
     private static final Logger logger = LoggerFactory.getLogger(OnlineTestUtil.class);
 
     public static String getJSONString(int code,String msg){
@@ -54,4 +65,29 @@ public class OnlineTestUtil {
             return null;
         }
     }
+
+    public   static String getContents(String[] content){
+        String contents = "";
+        int charIndex = 65;
+        for (String s: content){
+            contents += (char)charIndex+":";
+            contents += s;
+            contents += Question.SELECTION_SPLIT_STRING;
+            charIndex ++;
+        }
+        return contents;
+    }
+
+    public static String getAnswers(Integer[] answers){
+        Arrays.sort(answers);
+        String answer = "";
+        for (int i = 0;i < answers.length;i++){
+            answer += (char)answers[i].intValue();
+            if (i != answers.length - 1){
+                answer += "、";
+            }
+        }
+        return answer;
+    }
+
 }
